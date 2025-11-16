@@ -21,7 +21,7 @@
 
         header {
             padding: 20px 20px;
-            border-bottom: 2px solid #e5e7eb;
+            border-bottom: 2px solid #c9b896;
         }
 
         .header-top {
@@ -68,18 +68,19 @@
 
         .blog-post-link {
             display: block;
-            border: 1px solid #eee;
+            border: 1.5px solid #bbb;
             padding: 25px;
             margin-bottom: 30px;
             border-radius: 5px;
-            transition: box-shadow 0.3s ease;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
             text-decoration: none;
             color: #333;
             cursor: pointer;
         }
 
         .blog-post-link:hover {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            border-color: #333;
         }
 
         .blog-post-link h2 {
@@ -101,7 +102,7 @@
             text-align: center;
             padding: 40px 20px;
             color: #666;
-            border-top: 2px solid #e5e7eb;
+            border-top: 2px solid #c9b896;
             margin-top: 60px;
         }
 
@@ -127,13 +128,13 @@
             <h1>Naomi</h1>
         </div>
         <nav>
-            <a href="../index.html">About</a>
-            <a href="index.html" class="active">Blog</a>
+            <a href="../">About</a>
+            <a href="./" class="active">Blog</a>
         </nav>
     </header>
 
     <main>
-        <a href="fire-alarms/index.html" class="blog-post-link">
+        <a href="fire-alarms/" class="blog-post-link">
             <h2>Fire Alarms and Curiosity</h2>
             <div class="blog-post-date">November 16, 2024</div>
             <p>
