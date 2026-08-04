@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="Why I’m leaving OpenAI to build telepathy." name="description"/><title>Why I’m leaving OpenAI to build telepathy</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;display=swap" rel="stylesheet"/>
+<script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+:root{--paper:#f5f3ed;--ink:#1c211d;--muted:#697069;--rule:#d8d7cf;--accent:#315f4d;--accent-soft:#e3ebe5;--serif:"Newsreader",Georgia,serif;--mono:"DM Mono",ui-monospace,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--paper)}body{margin:0;color:var(--ink);background:radial-gradient(circle at 8% 2%,rgba(49,95,77,.06),transparent 24rem),var(--paper);font-family:var(--serif);font-size:clamp(1.12rem,1.04rem + .28vw,1.28rem);line-height:1.62;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+.progress{position:fixed;inset:0 0 auto;z-index:20;height:3px;transform:scaleX(0);transform-origin:left;background:var(--accent)}main{width:min(100% - 3rem,720px);margin:0 auto;padding:clamp(4.5rem,10vw,7.5rem) 0 5rem}header{margin-bottom:clamp(4rem,8vw,5.5rem)}.eyebrow,.meta,.section-label,footer{font-family:var(--mono);font-size:.68rem;line-height:1.5;letter-spacing:.11em;text-transform:uppercase}.eyebrow{display:flex;align-items:center;gap:.75rem;color:var(--accent);font-weight:500}.eyebrow:before{width:1.75rem;height:1px;content:"";background:currentColor}h1{max-width:18ch;margin:1.25rem 0 1.5rem;font-size:clamp(2.65rem,6.5vw,4.5rem);font-weight:500;line-height:1;letter-spacing:-.045em}.dek{max-width:35ch;margin:0;color:#4d554f;font-size:clamp(1.35rem,2.4vw,1.7rem);line-height:1.4}.meta{margin-top:1.75rem;color:var(--muted)}article>p{margin:0 0 1.25em}article>p:first-of-type::first-letter{float:left;margin:.07em .1em 0 0;color:var(--accent);font-size:4.15em;font-weight:500;line-height:.73}h2{margin:4.25rem 0 1.5rem;font-size:clamp(2.1rem,5vw,3.15rem);font-weight:500;line-height:1.05;letter-spacing:-.035em}h2:before,h3:before{display:block;margin-bottom:.8rem;color:var(--accent);content:attr(data-number);font-family:var(--mono);font-size:.68rem;letter-spacing:.1em}h3{margin:3.5rem 0 1.35rem;font-size:clamp(1.55rem,3.5vw,2.15rem);font-weight:500;line-height:1.12;letter-spacing:-.025em}a{color:inherit;text-decoration-color:color-mix(in srgb,var(--accent) 55%,transparent);text-decoration-thickness:1px;text-underline-offset:.15em}a:hover{color:var(--accent)}blockquote{margin:2.25rem 0 2.5rem;padding:.1rem 0 .1rem 1.4rem;border-left:2px solid var(--accent);color:#3b453e;font-size:1.22em;font-style:italic;line-height:1.5}blockquote p{margin:0}.math{overflow-x:auto;margin:1.8rem 0 2rem;padding:1.15rem 1rem;border-block:1px solid var(--rule);color:#18231c;font-size:.93em}.callout{margin:2.75rem 0 3.25rem;padding:1.35rem 1.5rem;border:1px solid #cdd8d0;border-radius:.25rem;background:var(--accent-soft);box-shadow:0 12px 40px rgba(38,54,44,.04)}.callout .section-label{display:block;margin-bottom:.75rem;color:var(--accent);font-weight:500}.callout p{margin:.3rem 0 1rem}.callout ul{margin:0;padding-left:1.25rem}.callout li{margin:.8rem 0}.prediction{margin:0 0 2.5rem!important;color:#344c40;font-size:1.3em;line-height:1.48}ul,ol{padding-left:1.35rem}li{margin:.55rem 0}.snapshot{margin:2.1rem 0!important;padding:1.25rem 1.35rem;border-left:2px solid #b7c8bd;background:rgba(255,255,255,.26)}figure.full-bleed{width:min(94vw,1100px);margin:3rem 50%;transform:translateX(-50%)}figure img{display:block;width:100%;height:auto;border-radius:4px;box-shadow:0 16px 45px rgba(30,40,34,.09)}.endnotes{margin-top:5rem;padding-top:.1rem;border-top:1px solid var(--rule)}.endnotes li{color:#4f5852;font-size:.92em}footer{margin-top:4.5rem;padding-top:1rem;border-top:1px solid var(--rule);color:var(--muted);text-transform:none}::selection{background:#cadbcf}
+@media(max-width:560px){main{width:min(100% - 2rem,720px);padding-top:3.75rem}h1{font-size:clamp(2.6rem,12vw,3.5rem)}figure.full-bleed{width:calc(100vw - 1rem)}.callout{padding:1.15rem}.math{font-size:.76em}}
+@media(prefers-reduced-motion:no-preference){header,article>*{animation:enter 650ms both;animation-timeline:view();animation-range:entry 0% entry 22%}}@keyframes enter{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@media print{.progress{display:none}body{background:white;color:black}main{padding:2rem 0}}
+</style><style>
+:root { --content-width: 1120px; }
+main { max-width: min(var(--content-width), calc(100vw - 64px)) !important; }
+article { max-width: none !important; width: 100% !important; }
+header, footer { max-width: none !important; }
+article > p, article > blockquote, article > div.math,
+.collapsible-content > p, .collapsible-content > blockquote, .collapsible-content > div.math,
+.collapsible-content > ul, .collapsible-content > ol {
+  max-width: 980px;
+}
+.collapsible-section { margin: 2.7rem 0 0; border-top: 1px solid var(--line, rgba(35,55,43,.18)); }
+.collapsible-section[data-level="3"] { margin-top: 1.8rem; border-top-style: dashed; }
+.collapsible-section > summary { cursor: pointer; list-style: none; display: flex; align-items: center; gap: .8rem; }
+.collapsible-section > summary::-webkit-details-marker { display: none; }
+.collapsible-section > summary::before { content: '−'; font-family: 'DM Mono', monospace; font-size: 1.1rem; color: var(--green, #395c49); width: 1.2rem; flex: 0 0 1.2rem; }
+.collapsible-section:not([open]) > summary::before { content: '+'; }
+.collapsible-heading { display: inline-block; margin: 0 !important; padding: 1.1rem 0 .85rem !important; }
+.collapsible-content { padding-left: 2rem; }
+.prompt-quotes { list-style: none !important; margin: 1.1rem 0 1.5rem !important; padding: 1.15rem 1.4rem !important; max-width: 900px !important; border-left: 3px solid var(--green, #395c49); background: rgba(64, 94, 73, .055); }
+.prompt-quotes li { margin: .55rem 0; padding: 0 !important; font-style: italic; }
+.prompt-quotes li::before { content: none !important; }
+@media (max-width: 760px) {
+  main { max-width: calc(100vw - 32px) !important; }
+  .collapsible-content { padding-left: .8rem; }
+}
+</style><style>
+/* Future snapshots — nested timeline cards */
+.future-intro {
+  max-width: 760px !important;
+  margin: .5rem 0 2.2rem !important;
+  color: #59645d;
+  font-size: 1.02em;
+}
+.future-timeline {
+  position: relative;
+  max-width: 1050px;
+  padding: .25rem 0 1rem 5.2rem;
+}
+.future-timeline::before {
+  position: absolute;
+  top: 1.4rem;
+  bottom: 2rem;
+  left: 2.05rem;
+  width: 1px;
+  content: "";
+  background: linear-gradient(to bottom, transparent, #9eb2a5 5%, #9eb2a5 95%, transparent);
+}
+.future-snapshot {
+  --snapshot-accent: #315f4d;
+  position: relative;
+  margin: 0 0 1.2rem;
+  overflow: clip;
+  border: 1px solid rgba(49, 95, 77, .18);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, .34);
+  box-shadow: 0 14px 40px rgba(38, 54, 44, .045);
+}
+.future-snapshot[open] {
+  background: rgba(255, 255, 255, .56);
+  box-shadow: 0 20px 55px rgba(38, 54, 44, .075);
+}
+.future-snapshot.tone-terminal { --snapshot-accent: #436c57; }
+.future-snapshot.tone-writing { --snapshot-accent: #78654a; }
+.future-snapshot.tone-evening { --snapshot-accent: #665b76; }
+.future-snapshot.tone-industry { --snapshot-accent: #3f6570; }
+.future-snapshot.tone-symbiosis { --snapshot-accent: #795348; }
+.future-snapshot > summary {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  min-height: 92px;
+  padding: 1rem 1.25rem 1rem 1rem;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+.future-snapshot > summary::-webkit-details-marker { display: none; }
+.future-snapshot > summary:hover { background: color-mix(in srgb, var(--snapshot-accent) 5%, transparent); }
+.future-marker {
+  position: absolute;
+  left: -5.05rem;
+  display: grid;
+  width: 4rem;
+  height: 2.15rem;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--snapshot-accent) 50%, #d8d7cf);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--snapshot-accent);
+  font-family: var(--mono);
+  font-size: .66rem;
+  font-weight: 500;
+  letter-spacing: .1em;
+}
+.future-marker::after {
+  position: absolute;
+  right: -1.25rem;
+  width: 1.2rem;
+  height: 1px;
+  content: "";
+  background: color-mix(in srgb, var(--snapshot-accent) 55%, #d8d7cf);
+}
+.future-summary-copy { display: grid; min-width: 0; }
+.future-year {
+  margin-bottom: .15rem;
+  color: var(--snapshot-accent);
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
+.future-title {
+  color: #263029;
+  font-size: clamp(1.25rem, 2.2vw, 1.68rem);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -.022em;
+}
+.future-kicker {
+  margin-top: .35rem;
+  color: #727a74;
+  font-size: .88rem;
+  line-height: 1.35;
+}
+.future-toggle {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border: 1px solid rgba(49, 95, 77, .17);
+  border-radius: 50%;
+  color: var(--snapshot-accent);
+  font-family: var(--mono);
+}
+.future-toggle::before { content: "+"; }
+.future-snapshot[open] .future-toggle::before { content: "−"; }
+.future-body {
+  position: relative;
+  padding: .35rem clamp(1.15rem, 3.8vw, 3rem) 2.35rem;
+  border-top: 1px solid rgba(49, 95, 77, .12);
+}
+.future-body::before {
+  display: block;
+  width: 2.4rem;
+  height: 2px;
+  margin: 1.45rem 0 1.5rem;
+  content: "";
+  background: var(--snapshot-accent);
+}
+.future-body > p,
+.future-body .scene-copy > p {
+  max-width: 880px !important;
+}
+.future-body p { margin: 0 0 1.25em; }
+.scene-lead {
+  max-width: 24ch !important;
+  margin: 0 0 .9rem !important;
+  color: var(--snapshot-accent);
+  font-size: clamp(1.45rem, 3vw, 2.25rem);
+  font-style: italic;
+  line-height: 1.08;
+  letter-spacing: -.025em;
+}
+.thought-terminal {
+  max-width: 950px;
+  margin: 1.5rem 0 1.9rem;
+  overflow: hidden;
+  border: 1px solid rgba(118, 146, 128, .48);
+  border-radius: 10px;
+  background: #18211c;
+  box-shadow: 0 22px 55px rgba(20, 30, 24, .2);
+  color: #d8e3da;
+  font-family: var(--mono);
+  font-size: clamp(.72rem, 1.25vw, .88rem);
+  line-height: 1.62;
+}
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: .65rem .9rem;
+  border-bottom: 1px solid rgba(202, 219, 207, .13);
+  background: #222d26;
+}
+.terminal-lights { display: flex; gap: .38rem; }
+.terminal-lights i { width: .58rem; height: .58rem; border-radius: 50%; background: #78877d; }
+.terminal-lights i:nth-child(2) { opacity: .72; }
+.terminal-lights i:nth-child(3) { opacity: .46; }
+.terminal-title { color: #99ab9f; font-size: .7em; letter-spacing: .06em; }
+.terminal-body { padding: 1.05rem 1.15rem 1.2rem; }
+.terminal-boot { margin-bottom: .9rem; color: #7f9b89; }
+.terminal-line,
+.terminal-cursor-line {
+  display: grid;
+  grid-template-columns: 7.6rem 1fr;
+  gap: .8rem;
+  padding: .48rem 0;
+}
+.terminal-line + .terminal-line { border-top: 1px dashed rgba(202, 219, 207, .1); }
+.terminal-prompt { color: #87c19b; white-space: nowrap; }
+.terminal-text { color: #edf3ee; }
+.terminal-cursor-line { padding-top: .8rem; color: #87c19b; }
+.terminal-cursor { animation: terminal-blink 1.05s steps(2, jump-none) infinite; }
+@keyframes terminal-blink { 50% { opacity: 0; } }
+.coffee-copy { margin-bottom: .75rem !important; }
+.ascii-moment {
+  display: inline-block;
+  min-width: min(100%, 420px);
+  margin: .4rem 0 1.7rem;
+  padding: 1rem 1.25rem 1.15rem;
+  border: 1px dashed color-mix(in srgb, var(--snapshot-accent) 52%, #d8d7cf);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--snapshot-accent) 5%, transparent);
+}
+.ascii-moment figcaption {
+  margin-bottom: .75rem;
+  color: var(--snapshot-accent);
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+}
+.ascii-moment pre {
+  margin: 0;
+  overflow-x: auto;
+  color: #435048;
+  font-family: var(--mono);
+  font-size: clamp(.68rem, 1.5vw, .85rem);
+  line-height: 1.25;
+}
+@media (max-width: 760px) {
+  .future-timeline { padding-left: 0; }
+  .future-timeline::before { display: none; }
+  .future-marker { position: static; width: 3.4rem; }
+  .future-marker::after { display: none; }
+  .future-snapshot > summary { grid-template-columns: auto 1fr auto; gap: .75rem; padding-inline: .8rem; }
+  .future-kicker { display: none; }
+  .future-body { padding-inline: 1rem; }
+  .terminal-line, .terminal-cursor-line { grid-template-columns: 1fr; gap: .05rem; }
+  .terminal-prompt { font-size: .82em; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .terminal-cursor { animation: none; }
+}
+</style><style>.prompt-quotes, .snapshot { all: unset; }</style><style>
+/* Collapsible quotes callout */
+.quotes-drawer {
+  padding: 0 !important;
+  overflow: hidden;
+}
+.quotes-drawer > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.4rem;
+  cursor: pointer;
+  list-style: none;
+  color: var(--accent);
+  font-family: var(--mono);
+  font-size: .72rem;
+  font-weight: 500;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  user-select: none;
+}
+.quotes-drawer > summary::-webkit-details-marker { display: none; }
+.quotes-drawer > summary:hover { background: rgba(49, 95, 77, .045); }
+.quotes-summary-toggle {
+  display: grid;
+  width: 1.85rem;
+  height: 1.85rem;
+  flex: 0 0 1.85rem;
+  place-items: center;
+  border: 1px solid rgba(49, 95, 77, .22);
+  border-radius: 50%;
+  font-size: 1rem;
+}
+.quotes-summary-toggle::before { content: '+'; }
+.quotes-drawer[open] .quotes-summary-toggle::before { content: '−'; }
+.quotes-drawer-body {
+  padding: 0 1.5rem 1.35rem;
+  border-top: 1px solid rgba(49, 95, 77, .12);
+}
+.quotes-drawer-body > p:first-child { margin-top: 1.2rem; }
+@media (max-width: 560px) {
+  .quotes-drawer > summary { padding: 1rem 1.1rem; }
+  .quotes-drawer-body { padding: 0 1.1rem 1.1rem; }
+}
+</style><style>
+/* Remove only the vertical line beside the future snapshot cards. */
+.future-timeline::before { display: none !important; }
+</style><style>
+/* Center the future snapshot boxes and let them fill the section width. */
+.future-timeline {
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: auto !important;
+  padding-left: 0 !important;
+}
+.future-snapshot {
+  width: 100% !important;
+}
+.future-marker {
+  display: none !important;
+}
+</style><style>
+/* Standard indentation for the five-part introductory roadmap. */
+.intro-roadmap {
+  list-style: decimal outside !important;
+  margin: 0.9rem 0 1.5rem 1.6rem !important;
+  padding-left: 1.15rem !important;
+}
+.intro-roadmap > li {
+  display: list-item !important;
+  padding-left: 0.35rem !important;
+  margin-bottom: 0.55rem !important;
+}
+</style><style>
+.toc-heading-split {
+  margin: 2.2rem 0 0.75rem !important;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.toc-split {
+  list-style: none !important;
+  margin: 0 0 1.8rem !important;
+  padding: 0 !important;
+  border-top: 1px solid var(--rule);
+}
+.toc-split > li {
+  display: grid !important;
+  grid-template-columns: 2rem minmax(10rem, 0.72fr) 1px 1.45fr;
+  align-items: baseline;
+  gap: 0.9rem;
+  margin: 0 !important;
+  padding: 0.82rem 0 !important;
+  border-bottom: 1px solid var(--rule);
+  color: var(--muted);
+}
+.toc-split > li::before {
+  content: attr(data-index);
+  font-family: var(--mono);
+  font-size: 0.67rem;
+  color: var(--accent);
+}
+.toc-split > li::after {
+  content: "";
+  grid-column: 3;
+  grid-row: 1;
+  align-self: stretch;
+  background: var(--rule);
+}
+.toc-split strong { display: contents; }
+.toc-split strong a {
+  grid-column: 2;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+}
+.toc-split strong a:hover { color: var(--accent); }
+.toc-split > li {
+  text-align: left;
+}
+@media (max-width: 700px) {
+  .toc-split > li {
+    grid-template-columns: 1.8rem 1fr;
+    gap: 0.35rem 0.7rem;
+  }
+  .toc-split > li::after { display: none; }
+  .toc-split strong a { grid-column: 2; }
+}
+</style><style>
+/* Responsive refinements for the split table of contents. */
+.toc-split > li {
+  grid-template-columns: 2rem minmax(8.5rem, 0.7fr) 1px minmax(0, 1.5fr) !important;
+}
+
+.toc-split > li > * {
+  min-width: 0;
+}
+
+.toc-split strong a {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 820px) {
+  .toc-split > li {
+    grid-template-columns: 1.7rem minmax(7.5rem, 0.78fr) minmax(0, 1.35fr) !important;
+    gap: 0.65rem 0.8rem !important;
+    padding: 0.8rem 0 !important;
+  }
+
+  .toc-split > li::after {
+    display: none !important;
+  }
+
+  .toc-split strong a {
+    grid-column: 2 !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .toc-heading-split {
+    margin-bottom: 0.5rem !important;
+  }
+
+  .toc-split > li {
+    grid-template-columns: 1.6rem minmax(0, 1fr) !important;
+    gap: 0.18rem 0.7rem !important;
+    padding: 0.85rem 0 !important;
+  }
+
+  .toc-split > li::before {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    padding-top: 0.13rem;
+  }
+
+  .toc-split strong {
+    display: block !important;
+    grid-column: 2;
+  }
+
+  .toc-split strong a {
+    display: inline !important;
+    grid-column: auto !important;
+  }
+
+  .toc-split > li {
+    color: var(--muted);
+  }
+}
+
+@media (max-width: 420px) {
+  .toc-split > li {
+    grid-template-columns: 1.35rem minmax(0, 1fr) !important;
+    gap: 0.15rem 0.55rem !important;
+  }
+
+  .toc-split > li::before {
+    font-size: 0.62rem !important;
+  }
+}
+</style><style>
+.neurotech-axes {
+  margin: 1.8rem 0;
+  padding: 1.15rem 1.25rem 1.2rem;
+  border: 1px solid var(--rule);
+  border-radius: 0.35rem;
+  background: color-mix(in srgb, var(--paper) 82%, var(--accent-soft));
+}
+.neurotech-axes-title {
+  margin-bottom: 0.9rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.neurotech-axes-art {
+  overflow-x: auto;
+  margin: 0 0 1rem;
+  padding: 0.95rem 1rem;
+  border: 1px solid color-mix(in srgb, var(--rule) 72%, var(--accent));
+  border-radius: 0.25rem;
+  background: #18231c;
+  color: #e3ebe5;
+  font-family: var(--mono);
+  font-size: clamp(0.58rem, 1.35vw, 0.76rem);
+  line-height: 1.45;
+  white-space: pre;
+}
+.neurotech-axes-list {
+  margin: 0 0 0 1.35rem;
+  padding-left: 0.75rem;
+}
+.neurotech-axes-list > li {
+  margin-bottom: 0.78rem;
+  padding-left: 0.2rem;
+}
+.neurotech-axes-list > li:last-child {
+  margin-bottom: 0;
+}
+@media (max-width: 620px) {
+  .neurotech-axes {
+    padding: 1rem;
+  }
+  .neurotech-axes-art {
+    font-size: 0.56rem;
+  }
+}
+</style><style>
+.neurotech-axes-art {
+  width: 100%;
+  font-size: clamp(0.5rem, 1.05vw, 0.72rem) !important;
+  line-height: 1.38 !important;
+}
+@media (max-width: 700px) {
+  .neurotech-axes-art {
+    font-size: 0.47rem !important;
+  }
+}
+</style><style>
+/* Larger, fixed-width neurotech diagram with perfectly aligned borders. */
+.neurotech-axes-art {
+  width: 100% !important;
+  min-width: max-content;
+  font-size: clamp(0.62rem, 1.18vw, 0.82rem) !important;
+  line-height: 1.45 !important;
+  letter-spacing: 0 !important;
+  font-variant-ligatures: none;
+}
+@media (max-width: 700px) {
+  .neurotech-axes-art {
+    font-size: 0.56rem !important;
+  }
+}
+</style><style>
+/* Standalone 2030 ASCII diagram, with no aside box. */
+.neurotech-ascii-fit {
+  width: 100%;
+  overflow: hidden;
+  margin: 1.45rem 0;
+}
+
+.neurotech-ascii-fit .neurotech-axes-art {
+  display: inline-block !important;
+  width: max-content !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+  font-family: var(--mono) !important;
+  font-size: 0.82rem !important;
+  line-height: 1.26 !important;
+  letter-spacing: 0 !important;
+  white-space: pre !important;
+  transform-origin: top left;
+  font-variant-ligatures: none;
+}
+</style><style>
+/* Keep terminal prompts and streamed content on the same line at every width. */
+.thought-terminal .terminal-line,
+.thought-terminal .terminal-cursor-line {
+  display: flex !important;
+  grid-template-columns: none !important;
+  align-items: baseline;
+  gap: .65rem !important;
+}
+.thought-terminal .terminal-prompt {
+  flex: 0 0 auto;
+}
+.thought-terminal .terminal-text,
+.thought-terminal .terminal-cursor {
+  min-width: 0;
+}
+</style><style>
+/* 2028 coffee moment: prose at left, mug only at right. */
+.coffee-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.4rem;
+  align-items: center;
+  margin: .65rem 0 1.7rem;
+}
+.coffee-row .coffee-copy {
+  margin: 0 !important;
+}
+.coffee-row .ascii-moment {
+  display: block !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+.coffee-row .ascii-moment pre {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: visible !important;
+  background: transparent !important;
+  color: #435048;
+  font-family: var(--mono);
+  font-size: clamp(.66rem, 1.25vw, .82rem);
+  line-height: 1.18;
+  white-space: pre;
+}
+@media (max-width: 520px) {
+  .coffee-row {
+    gap: .8rem;
+    align-items: start;
+  }
+  .coffee-row .ascii-moment pre {
+    font-size: .58rem;
+  }
+}
+</style><style>
+/* Subtle emphasis in the closing 2028 paragraph. */
+.slightly-louder {
+  font-family: var(--mono);
+  font-size: 1em;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+</style><style>
+/* Compact GPS / neural-latents ASCII at the end of “How do we get there?” */
+.gps-latents-ascii-wrap {
+  width: 100%;
+  overflow: hidden;
+  margin: 1.7rem 0 0;
+}
+.gps-latents-ascii {
+  display: inline-block;
+  width: max-content;
+  min-width: 0;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.28;
+  letter-spacing: 0;
+  white-space: pre;
+  transform-origin: top left;
+  font-variant-ligatures: none;
+}
+</style><style>
+/* Center the compact GPS / neural-latents ASCII and preserve a straight right edge. */
+.gps-latents-ascii-wrap {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start;
+  text-align: center;
+}
+.gps-latents-ascii {
+  flex: 0 0 auto;
+  transform-origin: top center !important;
+}
+</style><style>
+/* Subtle animated steam for the 2028 coffee mug. */
+.coffee-row .ascii-moment pre {
+  overflow: visible !important;
+}
+.coffee-steam-line {
+  display: block;
+  height: 1.18em;
+}
+.coffee-steam {
+  display: inline-block;
+  transform-origin: center bottom;
+  animation: coffee-steam-rise 2.4s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+.coffee-steam-b {
+  animation-delay: -.7s;
+}
+.coffee-steam-c {
+  animation-delay: -1.25s;
+}
+.coffee-steam-d {
+  animation-delay: -1.85s;
+}
+
+@keyframes coffee-steam-rise {
+  0% {
+    transform: translate3d(0, .14em, 0);
+    opacity: .22;
+  }
+  30% {
+    opacity: .78;
+  }
+  55% {
+    transform: translate3d(.08em, -.16em, 0);
+    opacity: .62;
+  }
+  100% {
+    transform: translate3d(-.06em, -.42em, 0);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .coffee-steam {
+    animation: none;
+    opacity: .7;
+  }
+}
+</style><style>
+/* Keep appendix acknowledgements at normal paragraph spacing. */
+.appendix-acknowledgements {
+  margin: 1em 0 0 !important;
+  padding: 0 !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  line-height: inherit !important;
+  text-align: left !important;
+}
+.appendix-acknowledgements em {
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+}
+</style><style>
+/* Make appendix acknowledgements use normal body paragraph spacing. */
+.appendix-acknowledgements {
+  margin: 1rem 0 0 !important;
+  padding: 0 !important;
+  font-size: inherit !important;
+  line-height: 1.55 !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  text-align: left !important;
+}
+.appendix-acknowledgements em {
+  display: inline !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+}
+</style><style>
+/* Acknowledgements: identical layout to the preceding appendix paragraph. */
+.appendix-acknowledgements {
+  margin: inherit !important;
+  padding: inherit !important;
+  width: auto !important;
+  max-width: none !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  word-spacing: inherit !important;
+  text-align: inherit !important;
+}
+.appendix-acknowledgements em {
+  font-size: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  word-spacing: inherit !important;
+}
+</style><style>
+/* Final acknowledgements alignment fix: flush with the preceding paragraph. */
+.appendix-acknowledgements {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-indent: 0 !important;
+}
+.appendix-acknowledgements em {
+  display: inline !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  text-indent: 0 !important;
+}
+</style><link rel="alternate" type="application/rss+xml" title="Naomi Bashkansky&apos;s Blog" href="/rss.xml">
+<link rel="icon" type="image/png" href="/assets/logo.png">
+<style>
+/* Adapts the standalone essay to Naomi Bashkansky&apos;s personal blog. */
+:root { --paper:#f3eef9; --ink:#333; --muted:#746f7c; --rule:#d9d0e2; --accent:#315899; --accent-soft:#e7e0f0; --serif:Georgia,Garamond,serif; --mono:Georgia,Garamond,serif; }
+html,body { background-color:var(--paper); }
+body { background:radial-gradient(circle at 8% 2%,rgba(101,75,135,.08),transparent 25rem),var(--paper); }
+.site-header { padding:20px; margin:0; }
+.site-header nav { display:flex; justify-content:center; gap:10px; }
+.site-header a { padding:10px 20px; border:2px solid transparent; border-radius:5px; color:#173f8f; font-family:Georgia,Garamond,serif; font-size:1.1rem; text-decoration:none; transition:background-color .3s ease,color .3s ease; }
+.site-header a:hover { background-color:rgba(0,0,0,.1); }
+.site-header a.active { border-color:#333; background-color:rgba(0,0,0,.15); }
+main { padding-top:clamp(2.5rem,6vw,4.5rem); }
+article>p:first-of-type::first-letter { float:none; margin:0; color:inherit; font-size:inherit; font-weight:inherit; line-height:inherit; }
+.meta { color:#999; font-family:Georgia,Garamond,serif; font-size:.9em; line-height:1.6; letter-spacing:normal; text-transform:none; }
+a { text-decoration-color:color-mix(in srgb,#315899 58%,transparent); }
+.callout,.future-snapshot { border-color:rgba(91,67,126,.2); }
+.future-snapshot { --snapshot-accent:#684c86; }
+.future-snapshot.tone-terminal { --snapshot-accent:#53609a; }
+.future-snapshot.tone-writing { --snapshot-accent:#86618d; }
+.future-snapshot.tone-evening { --snapshot-accent:#66558d; }
+.future-snapshot.tone-industry { --snapshot-accent:#426b8b; }
+.future-snapshot.tone-symbiosis { --snapshot-accent:#8b526e; }
+.thought-terminal { border-color:rgba(136,105,163,.5); background:#282438; color:#eeeaf3; }
+.terminal-bar { background:#332e46; }
+.terminal-prompt,.terminal-cursor-line { color:#c89ad0; }
+.terminal-boot,.terminal-title { color:#aea3c0; }
+.neurotech-axes-art { background:#282438; color:#eeeaf3; }
+.thought-terminal,.neurotech-axes .neurotech-axes-art,.neurotech-ascii-fit .neurotech-axes-art,.gps-latents-ascii-wrap .gps-latents-ascii,.coffee-row .ascii-moment pre { font-family:"Courier New",Courier,monospace !important; }
+.prediction,.future-intro { max-width:980px !important; margin:0 0 1.25em !important; color:var(--ink) !important; font-size:inherit !important; line-height:inherit !important; }
+.toc-split { list-style:decimal outside !important; margin:.8rem 0 2rem 1.6rem !important; padding:0 0 0 1rem !important; border:0 !important; }
+.toc-split > li { display:list-item !important; margin:.6rem 0 !important; padding:0 0 0 .2rem !important; border:0 !important; color:var(--ink) !important; text-align:left !important; }
+.toc-split > li::before,.toc-split > li::after { display:none !important; content:none !important; }
+.toc-split strong { display:inline !important; }
+.toc-split strong a { display:inline !important; color:inherit; font-weight:600; text-decoration:underline; text-decoration-color:color-mix(in srgb,var(--accent) 45%,transparent); text-underline-offset:.15em; }
+.site-back { display:block; width:min(100% - 3rem,1120px); margin:0 auto; color:#173f8f; font-weight:bold; text-decoration:none; }
+.site-footer { margin:4rem 0 0; padding:2rem 20px 3rem; border-top:1px solid var(--rule); color:#666; font-family:Georgia,Garamond,serif; font-size:1rem; letter-spacing:normal; text-align:center; text-transform:none; }
+.site-footer a { margin:0 15px; color:#173f8f; text-decoration:none; }
+.site-footer a:hover,.site-back:hover { color:#005ec4; }
+::selection { background:#d9cae7; }
+@media (max-width:560px) { .site-footer a { margin:0 7px; } }
+</style>
+</head><body><header class="site-header"><nav><a href="../../">About</a><a href="../" class="active">Blog</a></nav></header><div aria-hidden="true" class="progress"></div><main><header><h1>Why I’m leaving OpenAI to build telepathy</h1><p class="dek"></p><div class="meta">August 3, 2026</div></header><article><p><span>On Thursday, July 23rd, I resigned from OpenAI. On the 24th, I started as a Founding Researcher at </span><span><a href="https://condu.it/" rel="noopener noreferrer" target="_blank">Conduit</a></span><span>.</span> We build telepathy.</p><p>I'll talk about:</p><ol class="intro-roadmap toc-split"><li data-index="1"><strong><a href="#section-thought-to-text">Thought-to-text:</a></strong> what using telepathic tools will be like in 2028, 2030, and 2035</li><li data-index="2"><strong><a href="#section-how">How do we get there:</a></strong> why Conduit is collecting immense quantities of non-invasive neural data</li><li data-index="3"><strong><a href="#section-why-join">Why I joined:</a></strong> I joined because of the audacious vision, the brilliant people, and the fun problems</li><li data-index="4"><strong><a href="#section-hi">Hi:</a></strong> about me</li><li data-index="5"><strong><a href="#section-appendix">Appendix:</a></strong> a brief meditation on one aspect of OpenAI</li></ol><details class="collapsible-section" data-level="2" id="section-thought-to-text" open=""><summary><h2 class="collapsible-heading" data-number="01 / SECTION">Thought-to-text, aka telepathy</h2></summary><div class="collapsible-content"><p class="prediction"><span>Prediction: In a couple years, the main way we'll talk with our AIs is with our thoughts. They will not be</span><span><a href="https://x.com/sama/status/1983584366547829073?lang=en" rel="noopener noreferrer" target="_blank"> </a></span><span><a href="https://x.com/sama/status/1983584366547829073?lang=en" rel="noopener noreferrer" target="_blank">a super-smart automated intern or coworker</a></span><span> that you desperately try to keep up with. They will be a natural, joyful extension of you. </span></p><p class="future-intro">Below are fictionalized snapshots in time. I view them as optimistic but highly plausible futures.</p><div class="future-timeline"><details class="future-snapshot tone-terminal" open=""><summary><span aria-hidden="true" class="future-marker">2028</span><span class="future-summary-copy"><span class="future-year">2028</span><span class="future-title">A morning at Conduit</span></span><span aria-hidden="true" class="future-toggle"></span></summary><div class="future-body"><div class="scene-copy"><p class="scene-lead">It’s 2028.</p><p>I put a band around my head, and open my laptop at Conduit. It’s 9 am. My device pairs with my laptop over Bluetooth. I open, without loss of generality, Codex.</p><p>I think about the day's work as I look at my code, review yesterday's notes, and prepare for our 9:30 am standup. My GPT-7 agent has been chugging away at the new encoder I’ve been exploring for over a day now. I look at its work. I become confused by the plot labels, annoyed at the AI-speak in its first paragraph, and curious about the symbols in the equations. My vague thoughts get sent to Conduit's model, which uses its priors over language and the kinds of things I might say to output:</p></div><div aria-label="Thoughts translated into Codex prompts" class="thought-terminal" role="group"><div class="terminal-bar"><span aria-hidden="true" class="terminal-lights"><i></i><i></i><i></i></span><span class="terminal-title">conduit://thought-stream → codex</span></div><div class="terminal-body"><div class="terminal-boot">$ decode --source=neural-latent --autosend</div><div class="terminal-line"><span aria-hidden="true" class="terminal-prompt">thought_01 &gt;</span><span class="terminal-text">I’m looking at your plots. Please relabel the legend, and add a text cell below with a simple description of each line.</span></div><div class="terminal-line"><span aria-hidden="true" class="terminal-prompt">thought_02 &gt;</span><span class="terminal-text">I understand your 2nd paragraph of discussion, but please rewrite the first paragraph using the humanizer skill.</span></div><div class="terminal-line"><span aria-hidden="true" class="terminal-prompt">thought_03 &gt;</span><span class="terminal-text">Make a textbox explaining the equations with cleaner notation.</span></div><div aria-hidden="true" class="terminal-cursor-line"><span class="terminal-prompt">streaming &gt;</span><span class="terminal-cursor">█</span></div></div></div><p>The plot, paragraphs, and notation each took me 10 seconds to glance over. I have auto-send on, so after each 10-second chunk, the Conduit model deciphers my thoughts and sends it to GPT-7, which assigns each incoming task to a subagent. I look at the new plot, paragraph, and equations. (I wonder whether spherical harmonics might be useful after all; Codex spins off a subagent.) Convinced by the plot, I decide to make a quick slideshow with a prettified version showing only the baseline and top two lines, to show my teammates; Codex spins off a subagent.</p><div class="coffee-row"><p class="coffee-copy">I make myself coffee. My thoughts are mostly empty, but briefly I recall what I want to say to the candidate I’m getting lunch with tomorrow. In the background, Codex is prompted to think about info I might want for the lunch chat, and decides that updating the synthetic data scaling plot would be prudent; Codex spins off a subagent.</p><figure aria-label="ASCII coffee cup" class="ascii-moment"><pre><span class="coffee-steam-line">     <span class="coffee-steam coffee-steam-a">(</span> <span class="coffee-steam coffee-steam-b">(</span></span>
+<span class="coffee-steam-line">      <span class="coffee-steam coffee-steam-c">)</span> <span class="coffee-steam coffee-steam-d">)</span></span>
+   .--------.
+   |        |]
+   | COFFEE |
+   |        |
+   '--------'
+     \____/</pre></figure></div><p>I'm not saying words <span class="slightly-louder">really loudly</span> in my head while getting coffee. I just read the plots as I normally do, and make coffee as I normally do. It feels like magic.</p></div></details><details class="future-snapshot tone-industry" open=""><summary><span aria-hidden="true" class="future-marker">2030</span><span class="future-summary-copy"><span class="future-year">2030</span><span class="future-title">Industry adapts and Conduit expands</span></span><span aria-hidden="true" class="future-toggle"></span></summary><div class="future-body"><div class="scene-copy"><p class="scene-lead">It’s 2030.</p><p>The AI companies now train their models to directly interface with Conduit’s latent representations.</p><p>People love the neural bands. Every day, more people tell us they want the "real deal." Conduit continues to iterate on non-invasive read, but we’ve spun up two new efforts: invasive read, and non-invasive write.</p><div class="neurotech-ascii-fit"><pre class="neurotech-axes-art">
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                        ASIDE: THREE AXES TO NEUROTECH                        │
+├──────────────────────────────────────────────────────────────────────────────┤
+│     NON-INVASIVE  ◄────────────── ACCESS ──────────────►  INVASIVE           │
+│     no surgery                                          requires surgery     │
+├──────────────────────────────────────────────────────────────────────────────┤
+│     READ          ◄──────────── DIRECTION ─────────────►  WRITE              │
+│     extract information from the              make changes to the brain:     │
+│     brain: intentions, actions,            hear audio, or tell the brain     │
+│     emotions, internal monologue,                   to use more calories     │
+│     memories                                                                 │
+├──────────────────────────────────────────────────────────────────────────────┤
+│     NARROW        ◄────────────── SCOPE ───────────────►  GENERAL            │
+│     targeted reads and writes:               arbitrary reads and writes;     │
+│     read the brain's state of                      this requires massive     │
+│     health, or modify the brain                          amounts of data     │
+│     to reduce tremors                                                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+</pre></div><p>With electrical stimulation and ultrasound, we perform targeted writes to the brain. We partner with or acquire an existing company doing write, because they’ve developed some cool hardware that we’d like to use. Now that we've nailed down non-invasive, general read, we'll be able to verify whether these writes succeed.</p><p>With the scale of non-invasive data we have, we need only a small quantity of invasive data for the resulting fine-tune to be tremendously useful. Nonetheless, we're going for scale, so we reuse our existing research subject recruiting pipelines for invasive read. We either hire brain surgeons or partner with a company that has world-class brain surgeons with experience on the invasive side.</p></div></div></details><details class="future-snapshot tone-symbiosis" open=""><summary><span aria-hidden="true" class="future-marker">2035</span><span class="future-summary-copy"><span class="future-year">2035</span><span class="future-title">The AI is no longer “other”</span></span><span aria-hidden="true" class="future-toggle"></span></summary><div class="future-body"><div class="scene-lead">It’s 2035.</div><p><span><a href="https://waitbutwhy.com/2017/04/neuralink.html?utm_source=chatgpt.com#:~:text=the AI wouldn’t be “other”" rel="noopener noreferrer" target="_blank">The AI is no longer “other.” </a></span><span>It’s a natural extension of me. It feels like a sixth sense and another limb. The AI acts and learns, and every second it writes directly to my memory. Or rather – </span><span><em>I</em></span><span> wonder about a problem, </span><span><em>I</em></span><span> feel as though I’m literally surfing the web, </span><span><em>I</em></span><span> see glimpses of the websites, </span><span><em>I</em></span><span> get flashes of intuition about the problem, and </span><span><em>I</em></span><span> ultimately derive the answer. It feels fun! I feel superhuman. My brain is like the Flash.</span></p><p><span>Note: how superhuman this future looks depends directly on how superhuman we, as society, decide to make our AIs. Perhaps we choose to </span><span><a href="https://www.pacingthefrontier.com/" rel="noopener noreferrer" target="_blank">pace ourselves</a></span><span>. But I like that this is literally a human-in-the-loop vision of the future, where AI directly empowers humans rather than replacing us. </span></p></div></details></div><details class="callout quotes-drawer" open=""><summary><span class="quotes-summary-label">A few quotes</span><span aria-hidden="true" class="quotes-summary-toggle"></span></summary><div class="quotes-drawer-body"><p><span>Writers and speakers more elegant than I have elaborated on this thought-to-AI interface over the past decade. I will link to them, along with brief excerpts.</span></p><ul><li><span>“If we achieve tight symbiosis, the AI wouldn’t be “other”—it would be you and with a relationship to your cortex analogous to the relationship your cortex has with your limbic system.” – Elon Musk, 2017, in the </span><span><a href="https://waitbutwhy.com/2017/04/neuralink.html?utm_source=chatgpt.com" rel="noopener noreferrer" target="_blank">Wait But Why interview</a></span><span> that inspired one of Conduit’s cofounders to go into neurotech!</span></li><li><span>“We could plug electrodes into our brains…. I think a merge is probably our best-case scenario. If two different species both want the same thing and only one can have it—in this case, to be the dominant species on the planet and beyond—they are going to have conflict.” – Sam Altman, 2017, in </span><span><a href="https://blog.samaltman.com/the-merge" rel="noopener noreferrer" target="_blank">Sam’s personal blog</a></span><span>.</span></li><li><span>"Can we translate thought into basic actions?... I want to see what my schedule is today. I want to see what the weather is today. I want to turn the bedroom lights... If you can think, 'I want to turn the lights downstairs off,' and they will turn off, that might feel shockingly like telepathy." – Dean Ball, 2024, in an </span><span><a href="https://www.cognitiverevolution.ai/merging-man-and-machine-the-neurotech-frontier-with-dean-w-ball" rel="noopener noreferrer" target="_blank">interview</a></span></li><li><span>“It is not possible to understand the long-term future of artificial intelligence without understanding brain-computer interfaces.”</span><span> </span><span>– Rob Toews, 2025, in </span><span><a href="https://www.forbes.com/sites/robtoews/2025/12/07/the-next-frontier-for-ai-is-the-human-brain/" rel="noopener noreferrer" target="_blank">The Next Frontier For AI Is The Human Brain Forbes Article</a></span><span>. Quotes Conduit’s co-founders, Rio and Clem. &lt;3</span></li></ul></div></details></div></details><details class="collapsible-section" data-level="3" id="section-how" open=""><summary><h2 class="collapsible-heading" data-number="02 / SECTION">How do we get there?</h2></summary><div class="collapsible-content"><p><span>In theory, it’s simple. Our input is brain activity, and our target output is what the person was doing at the time – for example, what text the person wrote. Given the brain activity, we want to predict output that is semantically similar to what the person wrote. </span></p><p><span>To train models that can predict text given brain signals, we must apply the same lesson learned by those predicting text given speech audio, or text given preceding text: the </span><span><a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html" rel="noopener noreferrer" target="_blank">bitter lesson</a></span><span>. That means we must scale up our data collection by orders of magnitude beyond what has ever been done in academia.</span></p><p><span>It’s hard to collect enough data using invasive methods. Few people want a chip in their brain! But non-invasive methods are getting much better</span><span>. The hardware is improving and getting cheaper. And they may well be already good enough to train thought-to-text models, given a reasonable, finite </span><span>quantity</span><span> of data.</span></p><p><span>We don’t need perfect decoding to be useful. Your thoughts will be like GPS: a noisy GPS signal isn’t enough to determine your exact location. But combined with a map — equivalently, the LLM — it becomes remarkably accurate.</span></p><p>To read up on how we do data collection, check out Conduit's <a href="https://condu.it/thought/10k-hours#modalities" rel="noopener noreferrer" target="_blank">blog post</a>. If you're more of the active learning type, come be a <a href="https://condu.it/booking" rel="noopener noreferrer" target="_blank">research participant</a>!</p></div><div class="gps-latents-ascii-wrap"><pre class="gps-latents-ascii">┌──────────────────────────────────────────────────────────────────────────────┐
+│              IMPERFECT DECODING CAN STILL BE INCREDIBLY USEFUL               │
+├──────────────────────┬──────────────────────┬────────────────────────────────┤
+│ YOUR THOUGHTS        │ LLM = MAP            │ TOGETHER                       │
+│ = NOISY GPS SIGNAL   │                      │ = PRECISE INFERENCE            │
+│                      │                      │                                │
+│   ·  .   ·           │   ┌──────────────┐   │   ┌──────────────┐             │
+│ .    ?    .          │   │ ───○──────   │   │   │ ───○───●──   │ → answer    │
+│   ·   .   ·          │   │    │   ~~~   │   │   │    │   ~~~   │   / next    │
+│                      │   └──────────────┘   │   └──────────────┘   step      │
+└──────────────────────┴──────────────────────┴────────────────────────────────┘</pre></div></details><details class="collapsible-section" data-level="2" id="section-why-join" open=""><summary><h2 class="collapsible-heading" data-number="03 / SECTION">Why I joined</h2></summary><div class="collapsible-content"><p>3 reasons:</p><ol><li><strong>Audacious yet practical vision:</strong> I believe in this vision. I feel good about the vision, because it builds towards a more human future. And the scaling laws look good: the cosine similarity of our latent space predictions with the target latent spaces goes up as a straight line with respect to the log number of data hours. We're in the GPT-2 era.</li><li><strong>Brilliant people:</strong> The co-founders, Rio and Clem, are brilliant and relentless and sweet. I love working with them, and I love working with the several others who’ve joined to work on this same mission, on the same intellectually interesting problem.</li><li><strong>Fun problems:</strong> The research is SO interesting. I get to think about encoders, data efficiency, synthetic data, data attribution, multimodality, weird statistics… it’s a blast. At OpenAI, you can only work on a narrow slice of The Problem, and even on that narrow slice you’re constrained by the existing architecture. At Conduit, it’s all greenfield.</li></ol><p>In short: I’m happy! I’m working on a problem I’m obsessed with, that is frighteningly ambitious in a positive way, with a small group of people I like.</p><p>And: if Conduit becomes the general read and write company, then I expect it to be worth over $1 trillion. I suppose I wouldn’t mind being a billionaire.</p></div></details><details class="collapsible-section" data-level="2" id="section-hi" open=""><summary><h2 class="collapsible-heading" data-number="04 / SECTION">By the way, hi!</h2></summary><div class="collapsible-content"><p><span>For those who don’t know me: hello! Until two weeks ago, I had been a researcher at OpenAI for the previous year and a half. </span></p><p><span>I grew up in Washington state, playing competitive chess from ages 5-15, stopping after becoming a </span><span><a href="https://en.wikipedia.org/wiki/Naomi_Bashkansky" rel="noopener noreferrer" target="_blank">WIM</a></span><span>. My first time hearing about AGI was when I was 12, but for years I figured it was just a weird but interesting idea that people on the internet liked to write about. </span></p><p><span>At 18, I enrolled in Harvard to study computer science. In a class, I learned about GPT-3 and finally read Bostrom’s </span><span><em>Superintelligence</em></span><span>. Wow, what a wake-up moment. I got invested in AI safety research, had a brief stint in AI policy, and ultimately joined OpenAI on the alignment team. At OpenAI, other than my research, I spent some time on various side projects: like making OpenAI’s AGI onboarding presentation and our </span><span><a href="http://alignment.openai.com" rel="noopener noreferrer" target="_blank">alignment blog</a></span><span>, and helping advise the AI Resilience division of the OpenAI Foundation.</span></p><p><span>If you want to chat about Conduit, reach out to me at <strong><a href="mailto:naomi@condu.it">naomi@condu.it</a></strong>. Let’s grab coffee, or I’ll give you a tour of our unusual and beautiful office in San Francisco. We’re always hiring researchers, infra folks, and operators. </span></p></div></details><details class="collapsible-section" data-level="2" id="section-appendix"><summary><h2 class="collapsible-heading" data-number="APPENDIX / OPENAI">Appendix: oai-reflections-mini</h2></summary><div class="collapsible-content"><p><span>I will leave my full </span><span><a href="https://calv.info/openai-reflections" rel="noopener noreferrer" target="_blank">reflections on OpenAI</a></span><span> for another blog post. I cannot do this strange, audacious, once-in-a-century (millennia?) company justice without writing for pages upon pages.</span></p><p><span>Shortly after I joined, former Board member Larry Summers said that OpenAI is characterized by its vaulting and transcendent ambition. If I were to do PCA on the “personality” of OpenAI, that would be the first principal component. But there are many other principal components. </span></p><p><strong><span>For now, here’s one reflection:</span><span> </span><span>is OpenAI AGI-pilled?</span></strong></p><p>In many ways, OpenAI “Feels the AGI” – i.e., makes decisions that take into account the outcomes from and timelines to AGI and superintelligence. In other ways, it really hasn’t Felt the AGI.</p><p>As examples: my onboarding gave a brief mention that one of our core values is that we "Feel the AGI," then never mentioned AGI again. At lunch, I overheard conversations about research, gossip, and weekend plans, but rarely high-minded debates hashing out concretely what kind of institution frontier labs should be, how many years until AI researchers are out of a job, or what the bottlenecks to RSI are (and should we do it).</p><p>On the other hand, OpenAI has consistently trained stronger models, developed Codex, created the Preparedness Framework, bought huge amounts of compute, heavily protected researchers, and made other AGI-pilled moves.</p><p>Much of this individual vs. company-wide AGI-pilledness difference can be explained via visionary leadership. But it also has to do with OpenAI being a "Doacracy." Let me explain.</p><p><span>To simplify, suppose that, at any given time, there is a correct high-dimensional direction \(\mathbf{d}\) to move in order to reach AGI as quickly as possible. OpenAI's estimate of that direction is \(\hat{\mathbf{d}}\). OpenAI might have a </span><span>biased</span><span> estimate of the correct direction—that is, it systematically points to the wrong direction, so</span></p><div class="math">\[\mathbb{E}\!\left[\hat{\mathbf{d}}\right] \neq \mathbf{d}\]</div><p><span>Alternatively, OpenAI might have a </span><span>high-variance</span><span> estimate: on average it points in the correct direction, but the variance is large,</span></p><div class="math">\[\mathbb{E}\!\left[\hat{\mathbf{d}}\right] = \mathbf{d}, \qquad \operatorname{Cov}\!\left(\hat{\mathbf{d}}\right)\ \text{is large}\]</div><p><span>so the organization takes a zig-zag path toward AGI rather than a straight one.</span></p><p><span>I think the average OpenAI person became less AGI-pilled from 2015 to 2025 – largely due to many newcomers who are, extremely reasonably, joined because ChatGPT is a darn cool product, rather than because OpenAI is building Machine God. This selection effect creates interesting dynamics. (Side note: the average level of Feeling the AGI seems to have gone up in 2026.)</span></p><p><span>If OpenAI were a democracy, then it’d be biased toward walking in the wrong direction. </span></p><p><span>Instead, OpenAI is in large part a “Doacracy,” where responsibility is held by those who do the work. Those who spent the most time thinking about some underexplored piece of the future of AI tend to feel the most strongly about what OpenAI’s strategy should be in that space. They build a proof of concept, often outside their formal mandate, and show it to leadership. From the leader’s perspective, they rarely have time to think deeply about every topic, given OpenAI’s incredible pace. So, presented with a convincing proof of concept, they approve the project. </span></p><p><span>I claim this results in a low-bias, high-variance direction of progress. This is part of why, despite the internal chaos of OpenAI, constant reorgs, and the occasional wrong bet, the company has gone very far, very quickly. It’s also part of why OpenAI has made thoughtful decisions about superintelligence safety. (There are many, many other reasons for both of these outcomes, but I claim this particular social dynamic is an underappreciated one.)</span></p><p><span>Better to be low-bias but high-variance than highly biased! OpenAI leaning into being a Doacracy has downstream implications. Because AI and the situation change so quickly, no one has had </span><span>that</span><span> long to think about the problems. Even a totally new hire can, given sufficient thoughtfulness and strong execution, substantially change what OpenAI is doing. </span></p><p>OpenAI is reminiscent of Franklin D. Roosevelt’s style of operating in how new/less senior hires are unusually empowered (and in more ways too):</p><blockquote><p><a href="https://en.wikipedia.org/wiki/Presidency_of_Franklin_D._Roosevelt_(1933–1941)?#Administration:~:text=The president stayed,harmonizing, conciliating, manipulating." rel="noopener noreferrer" target="_blank">The president stayed in charge of his administration... by ignoring or bypassing collective decision-making agencies, such as the Cabinet.</a></p></blockquote><p>Longer reflections will wait for another post. I am dearly grateful for the alignment team and others who took a bet on me, and for the friends I made at OpenAI.</p><p><span style="font-style: italic;">Acknowledgements: Thank you to Clem von Stengel, Rio Popper, the Conduit team, Devansh Pandey, and Gabe Wu for feedback. All mistakes are my own.</span></p></div></details></article></main><a href="../" class="site-back">← Back to Blog</a><footer class="site-footer"><a href="https://linkedin.com/in/naomibas" target="_blank">LinkedIn</a><a href="https://x.com/NaomiBashkansky" target="_blank">X (Twitter)</a><a href="mailto:nomichka@gmail.com">Email</a><a href="../../rss.xml">RSS</a></footer><script>const p=document.querySelector('.progress');function u(){const d=document.documentElement.scrollHeight-innerHeight;p.style.transform=`scaleX(${d>0?scrollY/d:0})`}addEventListener('scroll',u,{passive:true});u();</script><script>
+(() => {
+  const fitNeurotechAscii = () => {
+    document.querySelectorAll('.neurotech-ascii-fit').forEach((wrapper) => {
+      const art = wrapper.querySelector('.neurotech-axes-art');
+      if (!art) return;
+
+      art.style.transform = 'none';
+      wrapper.style.height = 'auto';
+
+      const available = wrapper.clientWidth;
+      const natural = art.scrollWidth;
+      const scale = natural > available ? available / natural : 1;
+
+      art.style.transform = `scale(${scale})`;
+      wrapper.style.height = `${art.scrollHeight * scale}px`;
+    });
+  };
+
+  addEventListener('resize', fitNeurotechAscii, { passive: true });
+  addEventListener('DOMContentLoaded', fitNeurotechAscii);
+  fitNeurotechAscii();
+})();
+</script><script>
+(() => {
+  const fitGpsLatentsAscii = () => {
+    document.querySelectorAll('.gps-latents-ascii-wrap').forEach((wrapper) => {
+      const art = wrapper.querySelector('.gps-latents-ascii');
+      if (!art) return;
+
+      art.style.transform = 'none';
+      wrapper.style.height = 'auto';
+
+      const available = wrapper.clientWidth;
+      const natural = art.scrollWidth;
+      const scale = natural > available ? available / natural : 1;
+
+      art.style.transform = `scale(${scale})`;
+      wrapper.style.height = `${art.scrollHeight * scale}px`;
+    });
+  };
+
+  addEventListener('resize', fitGpsLatentsAscii, { passive: true });
+  addEventListener('DOMContentLoaded', fitGpsLatentsAscii);
+  fitGpsLatentsAscii();
+})();
+</script></body></html>
