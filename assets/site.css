@@ -1,0 +1,142 @@
+/* Defines the shared visual language for Naomi Bashkansky's website. */
+
+:root {
+    --site-background: #f3eef9;
+    --site-ink: #333;
+    --site-link: #003edc;
+    --site-link-hover: #005ec4;
+    --site-nav-link: #173f8f;
+    --site-rule: #d9d0e2;
+    --paper: var(--site-background);
+    --ink: var(--site-ink);
+    --muted: #746f7c;
+    --rule: var(--site-rule);
+    --accent: #315899;
+    --accent-soft: #e7e0f0;
+    --serif: Georgia, Garamond, serif;
+    --mono: Georgia, Garamond, serif;
+}
+
+html,
+body {
+    background: var(--site-background);
+}
+
+body {
+    color: var(--site-ink);
+    font-family: Georgia, Garamond, serif;
+}
+
+a {
+    color: var(--site-link);
+}
+
+a:hover {
+    color: var(--site-link-hover);
+}
+
+body > header {
+    margin: 0;
+    padding: 20px;
+}
+
+body > header nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+}
+
+body > header nav a {
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    color: var(--site-nav-link);
+    font-family: Georgia, Garamond, serif;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body > header nav a:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+body > header nav a.active {
+    border-color: var(--site-ink);
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.post-title {
+    max-width: none;
+    margin: 0 0 10px;
+    color: var(--site-ink);
+    font-family: Georgia, Garamond, serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: normal;
+}
+
+.post-date {
+    margin: 0 0 10px;
+    color: #999;
+    font-family: Georgia, Garamond, serif;
+    font-size: 0.9em;
+    line-height: 1.6;
+    letter-spacing: normal;
+    text-transform: none;
+}
+
+.post-header,
+main > header {
+    margin-bottom: 1rem;
+}
+
+.post-content,
+main > article {
+    font-size: clamp(16.5px, calc(16.1px + 0.125vw), 17.6px);
+    line-height: 1.8;
+}
+
+.site-back {
+    display: block;
+    width: min(100% - 3rem, 1120px);
+    margin: 0 auto;
+    color: var(--site-nav-link);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+body > footer {
+    margin-top: 60px;
+    padding: 40px 20px;
+    border-top: 0;
+    color: #666;
+    font-family: Georgia, Garamond, serif;
+    font-size: 1rem;
+    letter-spacing: normal;
+    text-align: center;
+    text-transform: none;
+}
+
+body > footer a {
+    margin: 0 15px;
+    color: var(--site-nav-link);
+    text-decoration: none;
+}
+
+body > footer a:hover,
+.site-back:hover {
+    color: var(--site-link-hover);
+}
+
+::selection {
+    background: #d9cae7;
+}
+
+@media (max-width: 560px) {
+    body > footer a {
+        margin: 0 7px;
+    }
+}
