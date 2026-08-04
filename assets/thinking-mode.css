@@ -1,0 +1,82 @@
+/* Styles the About-page thought-to-text constellation mode. */
+
+body {
+    transition: background-color 0.7s ease;
+}
+
+body.thinking-mode {
+    background-color: #ebe9f7;
+}
+
+.thinking-background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.7s ease;
+}
+
+body.thinking-mode .thinking-background {
+    opacity: 1;
+}
+
+.thinking-toggle {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    z-index: 10;
+    width: max-content;
+    padding: 8px 13px;
+    border: 1px solid rgba(64, 55, 112, 0.45);
+    border-radius: 999px;
+    background: rgba(247, 244, 252, 0.88);
+    color: #3c3960;
+    font: 0.82rem Georgia, Garamond, serif;
+    cursor: pointer;
+    box-shadow: 0 3px 12px rgba(60, 48, 100, 0.1);
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(-50%, -4px);
+    transition: background-color 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+}
+
+.profile-image-swap.is-chess-active::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 9;
+    width: 100%;
+    height: 50px;
+}
+
+.profile-image-swap.is-chess-active:hover .thinking-toggle {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, 0);
+}
+
+.thinking-toggle:hover {
+    background: rgba(238, 230, 249, 0.96);
+    box-shadow: 0 4px 16px rgba(92, 56, 130, 0.18);
+    transform: translate(-50%, -1px);
+}
+
+.thinking-toggle[aria-pressed="true"] {
+    background: rgba(218, 202, 241, 0.94);
+    box-shadow: 0 0 18px rgba(146, 73, 180, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body,
+    .thinking-background,
+    .thinking-toggle {
+        transition: none;
+    }
+}

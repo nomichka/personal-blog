@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="alternate" type="application/rss+xml" title="Naomi Bashkansky's Blog" href="/rss.xml">
     <link rel="icon" type="image/png" href="/assets/logo.png">
+    <link rel="stylesheet" href="/assets/thinking-mode.css">
     <title>Naomi Bashkansky | About Me</title>
     <style>
         * {
@@ -14,10 +15,18 @@
         }
 
         body {
-            background-color: #e8f5e9;
+            background-color: #f3eef9;
             font-family: 'Georgia', 'Garamond', serif;
             line-height: 1.6;
             color: #333;
+        }
+
+        a {
+            color: #003edc;
+        }
+
+        a:hover {
+            color: #005ec4;
         }
 
 
@@ -43,7 +52,7 @@
         }
 
         nav a {
-            color: #333;
+            color: #173f8f;
             text-decoration: none;
             padding: 10px 20px;
             border-radius: 5px;
@@ -99,12 +108,53 @@
             background-color: #555;
         }
 
+        .profile-image-swap {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+        }
+
         .profile-image {
+            position: absolute;
+            inset: 0;
             width: 200px;
             height: 200px;
             border-radius: 10px;
             object-fit: cover;
-            margin: 20px 0;
+            opacity: 0;
+            transform: scale(0.96);
+            transition: opacity 0.85s ease, transform 0.85s ease;
+        }
+
+        .profile-image.is-active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .profile-image-chess-younger { object-position: 100% center; }
+        .profile-image-purple-sweater { object-position: 58% center; }
+
+        .flower-bloom {
+            position: absolute;
+            z-index: 2;
+            left: calc(50% + var(--flower-x));
+            top: calc(50% + var(--flower-y));
+            color: var(--flower-color);
+            font-family: Georgia, serif;
+            font-size: var(--flower-size);
+            line-height: 1;
+            opacity: 0;
+            pointer-events: none;
+            text-shadow: 0 0 5px rgba(192, 38, 211, 0.28);
+            animation: flower-cycle var(--flower-duration) ease-out forwards;
+        }
+
+        @keyframes flower-cycle {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.15) rotate(var(--flower-start-rotation)); }
+            22% { opacity: 0.82; transform: translate(-50%, -50%) scale(1.08) rotate(var(--flower-end-rotation)); }
+            58% { opacity: 0.7; transform: translate(-50%, -50%) scale(1) rotate(var(--flower-end-rotation)); }
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(0.78) rotate(var(--flower-end-rotation)); }
         }
 
         footer {
@@ -119,18 +169,19 @@
         }
 
         .social-links a {
-            color: #333;
+            color: #173f8f;
             text-decoration: none;
             margin: 0 15px;
             transition: color 0.3s ease;
         }
 
         .social-links a:hover {
-            color: #666;
+            color: #005ec4;
         }
     </style>
 </head>
 <body>
+    <canvas class="thinking-background" aria-hidden="true"></canvas>
     <header>
         <nav>
             <a href="./" class="active">About</a>
@@ -140,12 +191,16 @@
 
     <main>
         <section>
-            <div style="text-align: center;">
-                <img src="assets/naomi.jpg" alt="Naomi" class="profile-image">
+            <div class="profile-image-swap" tabindex="0" role="button" aria-label="Show next portrait of Naomi">
+                <img src="assets/naomi.jpg" alt="Naomi" class="profile-image is-active">
+                <img src="assets/portrait-hover.png" alt="Illustrated Naomi" class="profile-image">
+                <img src="assets/naomi-chess-younger.png" alt="Young Naomi playing chess" class="profile-image profile-image-chess-younger">
+                <img src="assets/naomi-purple-sweater.png" alt="Naomi in a purple sweater" class="profile-image profile-image-purple-sweater">
+                <button class="thinking-toggle" type="button" aria-pressed="false">Thinking mode ✦</button>
             </div>
             <h2>About Me</h2>
             <p>
-                Welcome! :) I'm Naomi Bashkansky. I care about ensuring Artificial General Intelligence goes well for humanity. I'm a founding researcher at Conduit Intelligence.
+                Welcome! :) I'm Naomi Bashkansky. I care about ensuring Artificial General Intelligence goes well for humanity. I'm a founding researcher at <a href="https://condu.it/">Conduit Intelligence</a>, building thought-to-text.
             </p>
             <p>
                 I love reading, thinking, and making friends. Reach out if you're in San Francisco!
@@ -162,5 +217,113 @@
             <a href="rss.xml">RSS</a>
         </div>
     </footer>
+    <script>
+        const portrait = document.querySelector(".profile-image-swap");
+        const flowerTypes = ["❀", "✿", "❁", "✾", "✽"];
+        const flowerColors = ["#b51fc1", "#cc35d4", "#9e279f", "#df55cf"];
+        let bloomTimer = null;
+        let pointerActive = false;
+        let keyboardActive = false;
+
+        function randomBetween(min, max) {
+            return min + Math.random() * (max - min);
+        }
+
+        function createFlower() {
+            const flower = document.createElement("span");
+            const angle = randomBetween(0, Math.PI * 2);
+            const radius = randomBetween(112, 138);
+
+            flower.className = "flower-bloom";
+            flower.setAttribute("aria-hidden", "true");
+            flower.textContent = flowerTypes[Math.floor(Math.random() * flowerTypes.length)];
+            flower.style.setProperty("--flower-x", Math.cos(angle) * radius + "px");
+            flower.style.setProperty("--flower-y", Math.sin(angle) * radius + "px");
+            flower.style.setProperty("--flower-size", randomBetween(13, 27) + "px");
+            flower.style.setProperty("--flower-duration", randomBetween(1.4, 2.2) + "s");
+            flower.style.setProperty("--flower-color", flowerColors[Math.floor(Math.random() * flowerColors.length)]);
+            flower.style.setProperty("--flower-start-rotation", randomBetween(-40, 40) + "deg");
+            flower.style.setProperty("--flower-end-rotation", randomBetween(-12, 12) + "deg");
+            flower.addEventListener("animationend", () => flower.remove(), { once: true });
+            return flower;
+        }
+
+        const portraitImages = Array.from(portrait.querySelectorAll(".profile-image"));
+        let portraitIndex = 0;
+
+        function showNextPortrait() {
+            portraitImages[portraitIndex].classList.remove("is-active");
+            portraitIndex = (portraitIndex + 1) % portraitImages.length;
+            const activePortrait = portraitImages[portraitIndex];
+            activePortrait.classList.add("is-active");
+            portrait.classList.toggle("is-chess-active", activePortrait.classList.contains("profile-image-chess-younger"));
+        }
+
+        function portraitIsActive() {
+            return pointerActive || keyboardActive;
+        }
+
+        function scheduleFlower() {
+            if (!portraitIsActive()) {
+                bloomTimer = null;
+                return;
+            }
+
+            portrait.append(createFlower());
+            bloomTimer = window.setTimeout(scheduleFlower, randomBetween(190, 430));
+        }
+
+        function startFlowers() {
+            if (bloomTimer !== null) {
+                return;
+            }
+
+            const openingFlowers = Math.floor(randomBetween(2, 5));
+            for (let index = 0; index < openingFlowers; index += 1) {
+                portrait.append(createFlower());
+            }
+            bloomTimer = window.setTimeout(scheduleFlower, randomBetween(190, 430));
+        }
+
+        function stopFlowers() {
+            if (portraitIsActive()) {
+                return;
+            }
+
+            window.clearTimeout(bloomTimer);
+            bloomTimer = null;
+        }
+
+        portrait.addEventListener("pointerenter", () => {
+            pointerActive = true;
+            startFlowers();
+        });
+        portrait.addEventListener("pointerleave", () => {
+            pointerActive = false;
+            keyboardActive = false;
+            stopFlowers();
+        });
+        portrait.addEventListener("focus", () => {
+            keyboardActive = true;
+            startFlowers();
+        });
+        portrait.addEventListener("blur", () => {
+            keyboardActive = false;
+            if (!pointerActive) {
+                stopFlowers();
+            }
+        });
+        portrait.addEventListener("click", showNextPortrait);
+        portrait.addEventListener("keydown", (event) => {
+            if (event.target !== portrait) {
+                return;
+            }
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                showNextPortrait();
+            }
+        });
+    </script>
+    <script src="/assets/thinking-mode.js"></script>
 </body>
 </html>
