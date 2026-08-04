@@ -72,7 +72,7 @@ body > header nav a.active {
     margin: 0 0 10px;
     color: var(--site-ink);
     font-family: Georgia, Garamond, serif;
-    font-size: 2.5em;
+    font-size: 40px;
     font-weight: 700;
     line-height: 1.2;
     letter-spacing: normal;
@@ -86,6 +86,11 @@ body > header nav a.active {
     line-height: 1.6;
     letter-spacing: normal;
     text-transform: none;
+}
+
+.post-header,
+main > header {
+    margin-bottom: 1rem;
 }
 
 .post-content,
