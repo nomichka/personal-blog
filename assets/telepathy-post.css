@@ -1,0 +1,141 @@
+/* Preserves only the telepathy essay's unique interactive and ASCII presentation. */
+
+.thought-terminal,
+.neurotech-axes .neurotech-axes-art,
+.neurotech-ascii-fit .neurotech-axes-art,
+.gps-latents-ascii-wrap .gps-latents-ascii,
+.coffee-row .ascii-moment pre {
+    font-family: "Courier New", Courier, monospace !important;
+}
+
+.thought-terminal {
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+.thought-terminal .terminal-body {
+    padding: 0.85rem 1.1rem 0.95rem;
+}
+
+.thought-terminal .terminal-boot {
+    margin-bottom: 0.65rem;
+    color: #b0c9b8;
+    font-size: 0.72rem;
+}
+
+.thought-terminal .terminal-line {
+    display: flex !important;
+    align-items: baseline;
+    gap: 0.65rem !important;
+    padding: 0.5rem 0;
+}
+
+.thought-terminal .terminal-line + .terminal-line {
+    border-top-color: rgba(202, 219, 207, 0.2);
+}
+
+.thought-terminal .terminal-prompt {
+    display: inline;
+    flex: 0 0 auto;
+    margin-bottom: 0;
+    color: #a8ddb8;
+    font-size: 0.82em;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.thought-terminal .terminal-text {
+    display: inline;
+    min-width: 0;
+    color: #f4f8f5;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.thought-terminal .terminal-cursor-line {
+    display: flex !important;
+    gap: 0.65rem !important;
+    padding-top: 0.55rem;
+}
+
+.thought-terminal .terminal-cursor-line .terminal-prompt {
+    margin-bottom: 0;
+}
+
+article > p:first-of-type::first-letter {
+    float: none;
+    margin: 0;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+}
+
+.collapsible-heading::before {
+    display: none !important;
+    content: none !important;
+}
+
+article > .collapsible-section {
+    border-top: 0 !important;
+}
+
+article > .collapsible-section:not(#section-appendix) > summary {
+    cursor: default;
+    pointer-events: none;
+}
+
+article > .collapsible-section:not(#section-appendix) > summary::before {
+    display: none !important;
+    content: none !important;
+}
+
+article > .collapsible-section > summary .collapsible-heading {
+    font-size: clamp(1.65rem, 3vw, 2.25rem);
+    line-height: 1.15;
+}
+
+.prediction,
+.future-intro {
+    max-width: 980px !important;
+    margin: 0 0 1.25em !important;
+    color: var(--site-ink) !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+}
+
+.toc-split {
+    margin: 0.8rem 0 2rem 1.6rem !important;
+    padding: 0 0 0 1rem !important;
+    border: 0 !important;
+    list-style: decimal outside !important;
+}
+
+.toc-split > li {
+    display: list-item !important;
+    margin: 0.6rem 0 !important;
+    padding: 0 0 0 0.2rem !important;
+    border: 0 !important;
+    color: var(--site-ink) !important;
+    text-align: left !important;
+}
+
+.toc-split > li::before,
+.toc-split > li::after {
+    display: none !important;
+    content: none !important;
+}
+
+.toc-split strong,
+.toc-split strong a {
+    display: inline !important;
+}
+
+.toc-split strong a {
+    color: inherit;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--accent) 45%, transparent);
+    text-underline-offset: 0.15em;
+}
