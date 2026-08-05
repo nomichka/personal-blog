@@ -1,9 +1,6 @@
 /* Preserves only the telepathy essay's unique interactive and ASCII presentation. */
 
 .thought-terminal,
-.neurotech-axes .neurotech-axes-art,
-.neurotech-ascii-fit .neurotech-axes-art,
-.gps-latents-ascii-wrap .gps-latents-ascii,
 .coffee-row .ascii-moment pre {
     font-family: "Roboto Mono", monospace !important;
     font-weight: 600;
@@ -11,6 +8,90 @@
     font-synthesis: none;
     -webkit-text-size-adjust: none;
     text-size-adjust: none;
+}
+
+.ascii-diagram {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    color: var(--ink);
+}
+
+.ascii-diagram text {
+    fill: currentColor;
+    font-family: "Roboto Mono", monospace;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.ascii-diagram .ascii-detail {
+    font-size: 10.5px;
+}
+
+.ascii-diagram .ascii-frame,
+.ascii-diagram .ascii-rule,
+.ascii-diagram .ascii-arrow,
+.ascii-diagram .ascii-mini-box,
+.ascii-diagram .ascii-mini-line {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+}
+
+.ascii-diagram .ascii-frame,
+.ascii-diagram .ascii-rule,
+.ascii-diagram .ascii-mini-box {
+    shape-rendering: crispEdges;
+}
+
+.ascii-diagram .ascii-arrowhead,
+.ascii-diagram .ascii-dot {
+    fill: currentColor;
+}
+
+.ascii-desktop {
+    display: block;
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    color: var(--ink);
+    font-family: "Courier New", Courier, monospace !important;
+    font-weight: 600;
+    font-variant-ligatures: none;
+    font-synthesis: none;
+    line-height: 1.2;
+    white-space: pre;
+}
+
+.neurotech-ascii-fit > .neurotech-axes-art.ascii-desktop,
+.gps-latents-ascii-wrap > .gps-latents-ascii.ascii-desktop {
+    font-family: "Roboto Mono", "SFMono-Regular", Consolas, monospace !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important;
+}
+
+.neurotech-ascii-fit {
+    text-align: center;
+}
+
+.neurotech-ascii-fit > .ascii-diagram,
+.gps-latents-ascii-wrap > .ascii-diagram {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .ascii-desktop,
+    .neurotech-ascii-fit > .ascii-desktop,
+    .gps-latents-ascii-wrap > .ascii-desktop {
+        display: none !important;
+    }
+
+    .neurotech-ascii-fit > .ascii-diagram,
+    .gps-latents-ascii-wrap > .ascii-diagram {
+        display: block;
+    }
 }
 
 .thought-terminal {
