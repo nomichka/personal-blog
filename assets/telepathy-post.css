@@ -9,6 +9,8 @@
     font-weight: 600;
     font-variant-ligatures: none;
     font-synthesis: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
 }
 
 .thought-terminal {
