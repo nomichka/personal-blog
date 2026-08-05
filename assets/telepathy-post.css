@@ -21,12 +21,21 @@
 .ascii-diagram text {
     fill: currentColor;
     font-family: "Roboto Mono", monospace;
-    font-size: 12px;
+    font-size: 18px;
     font-weight: 600;
 }
 
 .ascii-diagram .ascii-detail {
-    font-size: 10.5px;
+    font-size: 15px;
+}
+
+.ascii-diagram .mobile-title,
+.ascii-diagram .mobile-label {
+    font-size: 15px;
+}
+
+.ascii-diagram .mobile-detail {
+    font-size: 13px;
 }
 
 .ascii-diagram .ascii-frame,
@@ -91,6 +100,8 @@
     .neurotech-ascii-fit > .ascii-diagram,
     .gps-latents-ascii-wrap > .ascii-diagram {
         display: block;
+        max-width: 430px;
+        margin-inline: auto;
     }
 }
 

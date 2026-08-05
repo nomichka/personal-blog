@@ -786,7 +786,7 @@ article > p, article > blockquote, article > div.math,
 </style><link rel="alternate" type="application/rss+xml" title="Naomi Bashkansky&apos;s Blog" href="/rss.xml">
 <link rel="icon" type="image/png" href="/assets/logo.png">
 <link rel="stylesheet" href="/assets/site.css">
-<link rel="stylesheet" href="/assets/telepathy-post.css?v=20260805-8">
+<link rel="stylesheet" href="/assets/telepathy-post.css?v=20260805-14">
 </head><body><header class="site-header"><nav><a href="../../">About</a><a href="../" class="active">Blog</a></nav></header><div aria-hidden="true" class="progress"></div><main><header><h1 class="post-title">Why I’m leaving OpenAI to build telepathy</h1><p class="dek"></p><div class="post-date">August 4, 2026</div></header><article class="post-content"><p><span>On Thursday, July 23rd, I resigned from OpenAI. On the 24th, I started as a Founding Researcher at </span><span><a href="https://condu.it/" rel="noopener noreferrer" target="_blank">Conduit</a></span><span>.</span> We're building telepathy: thought-to-text models, trained on non-invasive neural data.</p><p>I'll talk about:</p><ol class="intro-roadmap toc-split"><li data-index="1"><strong><a href="#section-thought-to-text">Thought-to-text:</a></strong> what using telepathic tools will be like in 2027, 2030, and 2035</li><li data-index="2"><strong><a href="#section-how">How do we build thought-to-text:</a></strong> why Conduit is collecting immense quantities of non-invasive neural data</li><li data-index="3"><strong><a href="#section-why-join">Why I joined:</a></strong> I joined because of the audacious vision, the brilliant people, and the fun problems</li><li data-index="4"><strong><a href="#section-hi">Hi:</a></strong> about me</li></ol><details open="" class="collapsible-section" data-level="2" id="section-thought-to-text"><summary><h2 class="collapsible-heading">1. Thought-to-text, aka telepathy</h2></summary><div class="collapsible-content"><p class="prediction"><span>My prediction: In a couple years, the main way we'll talk with our AIs is with our thoughts. They will not be</span><span><a href="https://x.com/sama/status/1983584366547829073?lang=en" rel="noopener noreferrer" target="_blank"> </a></span><span><a href="https://x.com/sama/status/1983584366547829073?lang=en" rel="noopener noreferrer" target="_blank">a super-smart automated intern or coworker</a></span><span> that you desperately try to keep up with. They will be a natural, joyful extension of you. </span></p><p class="future-intro">I wrote down vignettes of this future below. I view them as optimistic but highly plausible.</p><div class="future-timeline"><details open="" class="future-snapshot tone-terminal"><summary><span aria-hidden="true" class="future-marker">2027</span><span class="future-summary-copy"><span class="future-title">2027 — A morning at Conduit</span></span><span aria-hidden="true" class="future-toggle"></span></summary><div class="future-body"><div class="scene-copy"><p>I put a band around my head, and open my laptop at Conduit. It’s 9 am. My device pairs with my laptop over Bluetooth. I open, without loss of generality, Codex.</p><p>I think about the day's work as I look at my code, review yesterday's notes, and prepare for our 9:30 am standup. My GPT-7 agent has been chugging away at the new encoder I’ve been exploring for over a day now. I look at its work. I become confused by the plot labels, annoyed at the AI-speak in its first paragraph, and curious about the symbols in the equations. My vague thoughts get sent to Conduit's model, which uses its priors over language and the kinds of things I might say to output:</p></div><div aria-label="Thoughts translated into Codex prompts" class="thought-terminal" role="group"><div class="terminal-bar"><span aria-hidden="true" class="terminal-lights"><i></i><i></i><i></i></span><span class="terminal-title">conduit://thought-stream → codex</span></div><div class="terminal-body"><div class="terminal-boot">$ decode --source=neural-latent --autosend --to=codex</div><div class="terminal-line"><span aria-hidden="true" class="terminal-prompt">thought_01 &gt;</span><span class="terminal-text">I’m looking at your plots. Please relabel the legend, and add a text cell below with a simple description of each line.</span></div><div class="terminal-line"><span aria-hidden="true" class="terminal-prompt">thought_02 &gt;</span><span class="terminal-text">I understand your 2nd paragraph of discussion, but please rewrite the first paragraph using the humanizer skill.</span></div><div class="terminal-line"><span aria-hidden="true" class="terminal-prompt">thought_03 &gt;</span><span class="terminal-text">Make a textbox explaining the equations with cleaner notation.</span></div><div aria-hidden="true" class="terminal-cursor-line"><span class="terminal-prompt">streaming &gt;</span><span class="terminal-cursor">█</span></div></div></div><p>The plot, paragraphs, and notation each took me 10 seconds to glance over. I have auto-send on, so after each 10-second chunk, the Conduit model deciphers my thoughts and sends it to GPT-7, which assigns each incoming task to a subagent. I look at the new plot, paragraph, and equations. I wonder whether spherical harmonics might be useful after all; Codex spins off a subagent. Convinced by the plot, I decide to make a quick slideshow with a prettified version showing only the baseline and top two lines, to show my teammates; Codex spins off a subagent.</p><div class="coffee-row"><p class="coffee-copy">I make myself coffee. My thoughts are mostly empty, but I briefly recall what I want to say to the candidate I’m getting lunch with tomorrow. In the background, Codex is prompted to think about info I might want for the lunch chat, and decides that updating the synthetic data scaling plot before showing it off would be prudent; Codex spins off a subagent.</p><figure aria-label="ASCII coffee cup" class="ascii-moment"><pre><span class="coffee-steam-line">     <span class="coffee-steam coffee-steam-a">(</span> <span class="coffee-steam coffee-steam-b">(</span></span>
 <span class="coffee-steam-line">      <span class="coffee-steam coffee-steam-c">)</span> <span class="coffee-steam coffee-steam-d">)</span></span>
    .--------.
@@ -853,6 +853,101 @@ article > p, article > blockquote, article > div.math,
     art.setAttribute('aria-label', label);
     art.textContent = lines.join('\n');
     wrapper.prepend(art);
+  });
+
+  const mobileDiagrams = [
+    {
+      selector: '.neurotech-ascii-fit > .ascii-diagram',
+      viewBox: '0 0 328 370',
+      markup: `
+        <title>Three axes to neurotech</title>
+        <desc>Non-invasive to invasive access, read to write direction, and narrow to general scope.</desc>
+        <rect class="ascii-frame" x="0.5" y="0.5" width="327" height="369"/>
+        <line class="ascii-rule" x1="0" y1="38" x2="328" y2="38"/>
+        <line class="ascii-rule" x1="0" y1="105" x2="328" y2="105"/>
+        <line class="ascii-rule" x1="0" y1="270" x2="328" y2="270"/>
+        <text class="mobile-title" x="164" y="25" text-anchor="middle">THREE AXES TO NEUROTECH</text>
+        <text class="mobile-label" x="12" y="60">NON-INVASIVE</text>
+        <text class="mobile-label" x="316" y="60" text-anchor="end">INVASIVE</text>
+        <text class="mobile-detail" x="12" y="80">no surgery</text>
+        <text class="mobile-detail" x="316" y="80" text-anchor="end">requires surgery</text>
+        <line class="ascii-arrow" x1="56" y1="95" x2="136" y2="95"/>
+        <polygon class="ascii-arrowhead" points="49,95 58,91 58,99"/>
+        <line class="ascii-arrow" x1="192" y1="95" x2="272" y2="95"/>
+        <polygon class="ascii-arrowhead" points="279,95 270,91 270,99"/>
+        <text class="mobile-detail" x="164" y="100" text-anchor="middle">ACCESS</text>
+        <text class="mobile-label" x="12" y="132">READ</text>
+        <text class="mobile-label" x="316" y="132" text-anchor="end">WRITE</text>
+        <line class="ascii-arrow" x1="48" y1="150" x2="128" y2="150"/>
+        <polygon class="ascii-arrowhead" points="41,150 50,146 50,154"/>
+        <line class="ascii-arrow" x1="200" y1="150" x2="280" y2="150"/>
+        <polygon class="ascii-arrowhead" points="287,150 278,146 278,154"/>
+        <text class="mobile-detail" x="164" y="155" text-anchor="middle">DIRECTION</text>
+        <text class="mobile-detail" x="12" y="170">extract information</text>
+        <text class="mobile-detail" x="12" y="187">from brain:</text>
+        <text class="mobile-detail" x="12" y="204">intentions,</text>
+        <text class="mobile-detail" x="12" y="221">actions, emotions,</text>
+        <text class="mobile-detail" x="12" y="238">internal monologue,</text>
+        <text class="mobile-detail" x="12" y="255">memories</text>
+        <text class="mobile-detail" x="316" y="170" text-anchor="end">make changes to</text>
+        <text class="mobile-detail" x="316" y="187" text-anchor="end">the brain:</text>
+        <text class="mobile-detail" x="316" y="204" text-anchor="end">hear audio, or tell</text>
+        <text class="mobile-detail" x="316" y="221" text-anchor="end">it to use more</text>
+        <text class="mobile-detail" x="316" y="238" text-anchor="end">calories</text>
+        <text class="mobile-label" x="12" y="296">NARROW</text>
+        <text class="mobile-label" x="316" y="296" text-anchor="end">GENERAL</text>
+        <text class="mobile-detail" x="12" y="318">one predefined</text>
+        <text class="mobile-detail" x="12" y="338">capability</text>
+        <text class="mobile-detail" x="316" y="318" text-anchor="end">many capabilities</text>
+        <text class="mobile-detail" x="316" y="338" text-anchor="end">from one interface</text>
+        <line class="ascii-arrow" x1="54" y1="356" x2="134" y2="356"/>
+        <polygon class="ascii-arrowhead" points="47,356 56,352 56,360"/>
+        <line class="ascii-arrow" x1="194" y1="356" x2="274" y2="356"/>
+        <polygon class="ascii-arrowhead" points="281,356 272,352 272,360"/>
+        <text class="mobile-detail" x="164" y="361" text-anchor="middle">SCOPE</text>`
+    },
+    {
+      selector: '.gps-latents-ascii-wrap > .ascii-diagram',
+      viewBox: '0 0 328 300',
+      markup: `
+        <title>Imperfect decoding can still be incredibly useful</title>
+        <desc>Noisy thoughts combine with an LLM and context to produce a precise answer.</desc>
+        <rect class="ascii-frame" x="0.5" y="0.5" width="327" height="299"/>
+        <line class="ascii-rule" x1="0" y1="40" x2="328" y2="40"/>
+        <line class="ascii-rule" x1="0" y1="116" x2="328" y2="116"/>
+        <line class="ascii-rule" x1="0" y1="198" x2="328" y2="198"/>
+        <text class="mobile-title" x="164" y="18" text-anchor="middle">IMPERFECT DECODING</text>
+        <text class="mobile-title" x="164" y="34" text-anchor="middle">CAN STILL BE INCREDIBLY USEFUL</text>
+        <text class="mobile-label" x="12" y="64">YOUR THOUGHTS</text>
+        <text class="mobile-detail" x="12" y="84">= NOISY GPS SIGNAL</text>
+        <circle class="ascii-dot" cx="217" cy="74" r="2"/>
+        <circle class="ascii-dot" cx="240" cy="64" r="2"/>
+        <circle class="ascii-dot" cx="270" cy="82" r="2"/>
+        <text class="mobile-label" x="243" y="96">?</text>
+        <circle class="ascii-dot" cx="292" cy="65" r="2"/>
+        <text class="mobile-label" x="12" y="142">LLM = MAP</text>
+        <rect class="ascii-mini-box" x="164" y="130" width="144" height="52"/>
+        <line class="ascii-mini-line" x1="184" y1="154" x2="286" y2="154"/>
+        <line class="ascii-mini-line" x1="224" y1="140" x2="224" y2="172"/>
+        <circle cx="224" cy="154" r="5" fill="var(--paper)" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/>
+        <text class="mobile-detail" x="266" y="173">~~~</text>
+        <text class="mobile-label" x="12" y="224">TOGETHER</text>
+        <text class="mobile-detail" x="12" y="244">= PRECISE INFERENCE</text>
+        <rect class="ascii-mini-box" x="12" y="258" width="168" height="30"/>
+        <line class="ascii-mini-line" x1="28" y1="273" x2="164" y2="273"/>
+        <circle cx="76" cy="273" r="5" fill="var(--paper)" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"/>
+        <circle class="ascii-dot" cx="126" cy="273" r="5"/>
+        <line class="ascii-arrow" x1="196" y1="273" x2="224" y2="273"/>
+        <polygon class="ascii-arrowhead" points="231,273 222,269 222,277"/>
+        <text class="mobile-label" x="242" y="278">answer</text>`
+    }
+  ];
+
+  mobileDiagrams.forEach(({selector, viewBox, markup}) => {
+    const svg = document.querySelector(selector);
+    if (!svg) return;
+    svg.setAttribute('viewBox', viewBox);
+    svg.innerHTML = markup;
   });
 
   const fitDesktopAscii = () => {
