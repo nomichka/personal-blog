@@ -10,98 +10,52 @@
     text-size-adjust: none;
 }
 
-.ascii-diagram {
-    display: block;
-    width: 100%;
-    height: auto;
-    overflow: visible;
-    color: var(--ink);
-}
-
-.ascii-diagram text {
-    fill: currentColor;
-    font-family: "Roboto Mono", monospace;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.ascii-diagram .ascii-detail {
-    font-size: 15px;
-}
-
-.ascii-diagram .mobile-title,
-.ascii-diagram .mobile-label {
-    font-size: 15px;
-}
-
-.ascii-diagram .mobile-detail {
-    font-size: 13px;
-}
-
-.ascii-diagram .ascii-frame,
-.ascii-diagram .ascii-rule,
-.ascii-diagram .ascii-arrow,
-.ascii-diagram .ascii-mini-box,
-.ascii-diagram .ascii-mini-line {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1;
-    vector-effect: non-scaling-stroke;
-}
-
-.ascii-diagram .ascii-frame,
-.ascii-diagram .ascii-rule,
-.ascii-diagram .ascii-mini-box {
-    shape-rendering: crispEdges;
-}
-
-.ascii-diagram .ascii-arrowhead,
-.ascii-diagram .ascii-dot {
-    fill: currentColor;
-}
-
-.ascii-desktop {
-    display: block;
-    width: 100%;
-    margin: 0;
-    overflow: hidden;
-    color: var(--ink);
+.plain-ascii {
+    display: block !important;
+    box-sizing: border-box;
+    width: max-content !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--ink) !important;
     font-family: "Courier New", Courier, monospace !important;
-    font-weight: 600;
+    font-weight: 700 !important;
     font-variant-ligatures: none;
-    font-synthesis: none;
-    line-height: 1.2;
-    white-space: pre;
-}
-
-.neurotech-ascii-fit > .neurotech-axes-art.ascii-desktop,
-.gps-latents-ascii-wrap > .gps-latents-ascii.ascii-desktop {
-    font-family: "Roboto Mono", "SFMono-Regular", Consolas, monospace !important;
-    font-weight: 600 !important;
+    font-synthesis: none !important;
     letter-spacing: 0 !important;
+    line-height: 1.2 !important;
+    text-align: left !important;
+    white-space: pre !important;
+    word-break: normal !important;
+    word-wrap: normal !important;
+    overflow-wrap: normal !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
-.neurotech-ascii-fit {
-    text-align: center;
+.plain-ascii-mobile {
+    display: none !important;
 }
 
-.neurotech-ascii-fit > .ascii-diagram,
-.gps-latents-ascii-wrap > .ascii-diagram {
-    display: none;
+@media (min-width: 701px) {
+    .plain-ascii-desktop {
+        font-size: 13px !important;
+    }
 }
 
 @media (max-width: 700px) {
-    .ascii-desktop,
-    .neurotech-ascii-fit > .ascii-desktop,
-    .gps-latents-ascii-wrap > .ascii-desktop {
+    .plain-ascii-desktop {
         display: none !important;
     }
 
-    .neurotech-ascii-fit > .ascii-diagram,
-    .gps-latents-ascii-wrap > .ascii-diagram {
-        display: block;
-        max-width: 430px;
-        margin-inline: auto;
+    .plain-ascii-mobile {
+        display: block !important;
+        font-size: clamp(10.5px, 3.6vw, 16px) !important;
     }
 }
 
