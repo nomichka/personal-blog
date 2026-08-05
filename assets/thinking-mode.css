@@ -1,17 +1,13 @@
 /* Styles the About-page thought-to-text constellation mode. */
 
 body {
-    transition: background-color 0.7s ease;
-}
-
-body.thinking-mode {
-    background-color: #ebe9f7;
+    isolation: isolate;
 }
 
 .thinking-background {
     position: fixed;
     inset: 0;
-    z-index: -1;
+    z-index: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
@@ -21,6 +17,13 @@ body.thinking-mode {
 
 body.thinking-mode .thinking-background {
     opacity: 1;
+}
+
+body > header,
+body > main,
+body > footer {
+    position: relative;
+    z-index: 1;
 }
 
 .thinking-toggle {
@@ -74,7 +77,6 @@ body.thinking-mode .thinking-background {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    body,
     .thinking-background,
     .thinking-toggle {
         transition: none;

@@ -10,8 +10,26 @@
 }
 
 .thought-terminal {
-    font-size: 0.82rem;
+    border-color: #7a4a86;
+    background: #fff;
+    box-shadow: none;
+    color: #111;
+    font-family: "Roboto Mono", "SFMono-Regular", Consolas, monospace !important;
+    font-size: 0.76rem;
     line-height: 1.4;
+}
+
+.thought-terminal .terminal-bar {
+    border-bottom-color: #dfd0e4;
+    background: #f8f1fa;
+}
+
+.thought-terminal .terminal-lights i {
+    background: #74417f;
+}
+
+.thought-terminal .terminal-title {
+    color: #582467;
 }
 
 .thought-terminal .terminal-body {
@@ -20,7 +38,7 @@
 
 .thought-terminal .terminal-boot {
     margin-bottom: 0.65rem;
-    color: #b0c9b8;
+    color: #642c72;
     font-size: 0.72rem;
 }
 
@@ -32,14 +50,14 @@
 }
 
 .thought-terminal .terminal-line + .terminal-line {
-    border-top-color: rgba(202, 219, 207, 0.2);
+    border-top-color: rgba(100, 44, 114, 0.16);
 }
 
 .thought-terminal .terminal-prompt {
     display: inline;
     flex: 0 0 auto;
     margin-bottom: 0;
-    color: #a8ddb8;
+    color: #642c72;
     font-size: 0.82em;
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -48,9 +66,9 @@
 .thought-terminal .terminal-text {
     display: inline;
     min-width: 0;
-    color: #f4f8f5;
-    font-family: "Courier New", Courier, monospace;
-    font-weight: 600;
+    color: #111;
+    font-family: "Roboto Mono", "SFMono-Regular", Consolas, monospace;
+    font-weight: 460;
     line-height: 1.4;
 }
 
@@ -58,6 +76,7 @@
     display: flex !important;
     gap: 0.65rem !important;
     padding-top: 0.55rem;
+    color: #642c72;
 }
 
 .thought-terminal .terminal-cursor-line .terminal-prompt {
@@ -84,7 +103,9 @@ article > .collapsible-section {
 
 article > .collapsible-section:not(#section-appendix) > summary {
     cursor: default;
-    pointer-events: none;
+    pointer-events: auto;
+    user-select: text;
+    -webkit-user-select: text;
 }
 
 article > .collapsible-section:not(#section-appendix) > summary::before {
@@ -119,7 +140,9 @@ article > .collapsible-section > summary .collapsible-heading {
 
 article details > summary {
     cursor: default !important;
-    pointer-events: none;
+    pointer-events: auto;
+    user-select: text !important;
+    -webkit-user-select: text !important;
 }
 
 article details > summary::before,
@@ -220,7 +243,7 @@ article > .collapsible-section .collapsible-content,
 
 .quotes-drawer > summary {
     display: flex !important;
-    align-items: baseline;
+    align-items: center;
     justify-content: flex-start !important;
     gap: 0.55rem;
     padding: 0.8rem 1rem !important;
