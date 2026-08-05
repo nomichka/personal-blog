@@ -5,8 +5,10 @@
 .neurotech-ascii-fit .neurotech-axes-art,
 .gps-latents-ascii-wrap .gps-latents-ascii,
 .coffee-row .ascii-moment pre {
-    font-family: "Courier New", Courier, monospace !important;
+    font-family: "Roboto Mono", monospace !important;
     font-weight: 600;
+    font-variant-ligatures: none;
+    font-synthesis: none;
 }
 
 .thought-terminal {
